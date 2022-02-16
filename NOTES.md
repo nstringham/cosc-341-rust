@@ -14,3 +14,13 @@ fn main() {
 }
 ```
 
+## Installing Rust
+
+Install from [rust-lang.org](https://www.rust-lang.org/tools/install)
+
+Includes:
+
+- `rustc` the rust compiler
+- `rustup` a tool for updating rust
+- `cargo` rust's official package manager
+
