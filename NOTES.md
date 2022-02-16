@@ -6,3 +6,11 @@
   - this means no null pointer exceptions
 - created by Graydon Hoare at Mozilla in 2010
 
+## Hello World
+
+```rs
+fn main() {
+    println!("Hello, world!");
+}
+```
+
