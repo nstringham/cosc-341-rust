@@ -163,3 +163,11 @@ let my_int: i32 = 5;
 let my_float: f32 = my_int as f32;
 ```
 
+## Comments
+
+you can add a comment with `//`
+
+```rs
+// a comment on it's own line
+let x = 5; // a comment at the end of a line
+```
