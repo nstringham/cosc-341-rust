@@ -24,3 +24,36 @@ Includes:
 - `rustup` a tool for updating rust
 - `cargo` rust's official package manager
 
+## Variables
+
+here is how to make a variable
+
+```rs
+let x: i32 = 5;
+```
+
+or
+
+```rs
+let x = 5;
+```
+
+type annotations are optional if they can be inferred
+
+variables are immutable my default (like `final` in Java)
+
+to make them mutable add `mut`
+
+```rs
+let mut x = 5;
+x = 6;
+```
+
+Rust also has constants which are evaluated at compile time (like `#define` in C/C++)
+
+```rs
+const X: i32 = 5;
+```
+
+types are not optional for constants
+
