@@ -57,3 +57,109 @@ const X: i32 = 5;
 
 types are not optional for constants
 
+## Types
+
+has two main catagories of types
+
+- scaler types represent a single value
+- compound types represent a group of values
+
+## Scaler Types
+
+### Integers
+
+rust has signed and unsigned integers
+
+| size    | signed | unsigned |
+| ------- | ------ | -------- |
+| 8-bit   | i8     | u8       |
+| 16-bit  | i16    | u16      |
+| 32-bit  | i32    | u32      |
+| 64-bit  | i64    | u64      |
+| 128-bit | i128   | u128     |
+
+rust also allows you to use the cpu architectures native size with `isize` and `usize`
+
+```rs
+let x: i8 = 5; // 8 bit signed
+let y: u128 = 5; // 128 bit unsigned
+let z: isize = 5; // architecture dependant unsigned
+```
+
+### Floats
+
+integers are available in 32-bit and 64-bit
+
+```rs
+let x: f32 = 1.0; // 32 bit float
+let x: f64 = 1.0; // 64 but float
+```
+
+### Boolean
+
+```rs
+let x: bool = true;
+```
+
+### Charicters
+
+in rust charicters unicode and take 4 bytes
+
+```rs
+let x: char = 'a';
+let y = '😀';
+```
+
+## Compound Types
+
+### Arrays
+
+arrays are fixed length
+
+```rs
+let x: [i32; 5] = [1, 2, 3, 4, 5];
+```
+
+the `5` after the `;` is the size of the array
+
+arrays can be indexed with `[]`
+
+```rs
+let mut arr = [3, 2, 1];
+arr[2] = 4;
+let x = arr[0];
+```
+
+### Tuples
+
+tuples are like arrays but each position can be a diffrent type
+
+```rs
+let tup: (i32; f32; bool) = (5, 1.0, false);
+```
+
+tuples cannot be dynamically indexed but you can access values with `.`
+
+```rs
+let mut tup = (5, 1.0, false);
+tup.1 = 3.14;
+let x: bool = tup.2;
+```
+
+tuples can also be destructured like in JavaScript and Python
+
+```rs
+let tup = (3.2, 17, 2);
+let (a, b, c) = tup;
+let sum = b + c;
+```
+
+### Type conversion
+
+type conversion is not done for you. You have to use the `as` key word
+
+```rs
+let my_int: i32 = 5;
+let my_float: f32 = my_int as f32;
+```
+
