@@ -17,3 +17,13 @@ fn compute_pi(n: i32) -> f64 {
     // 4 * pi/4 = pi
     sum * 4.0
 }
+
+fn compute_sqrt(x: f64) -> f64 {
+    let mut guess: f64 = 1.0;
+
+    for _ in 0..10 {
+        guess = 0.5 * (guess + x / guess);
+    }
+
+    guess
+}
