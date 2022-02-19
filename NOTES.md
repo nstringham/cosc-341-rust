@@ -199,6 +199,59 @@ fn add(a: i32, b: i32) -> i32 {
 }
 ```
 
+## Expressions and Statements
+
+in Rust expressions return values and statements do not
+
+examples of statements include
+
+```rs
+let mut x = 5;
+x = 1;
+fn add_one(x: i32) -> i32 {x + 1}
+add_one(3);
+println!("hello world");
+```
+
+anything that ends in `;` is a statement
+
+examples of expressions include
+
+```rs
+5
+x
+x + 5
+add_one(3)
+```
+
+you can create expressions using `{}`
+
+for example
+
+```rs
+{
+    println!("hello world");
+    let x = 3;
+    x + 2
+}
+```
+
+is a n expression that prints "hello world" creates a variable called `x` with value 3 and then evaluates to 3 + 2
+
+so we can do
+
+```rs
+let a = {
+    println!("hello world");
+    let x = 3;
+    x + 2
+};
+```
+
+which will set print "hello world" and set a = 5
+
+note that the last line is an expression and doesn't have a `;` just like in a function that returns something
+
 ## Comments
 
 you can add a comment with `//`
