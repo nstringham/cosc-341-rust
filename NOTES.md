@@ -163,6 +163,42 @@ let my_int: i32 = 5;
 let my_float: f32 = my_int as f32;
 ```
 
+## Functions
+
+use `fn` to make a function
+
+```rs
+fn main() {
+    say_hello();
+}
+
+fn say_hello() {
+    println!("hello");
+}
+```
+
+every rust program has a `main` function
+
+you can pass values to functions with arguments
+
+specify a return type using `->`
+
+you can return with `return`
+
+```rs
+fn add(a: i32, b: i32) -> i32 {
+    return a + b;
+}
+```
+
+or by putting an expression on the last line
+
+```rs
+fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+```
+
 ## Comments
 
 you can add a comment with `//`
