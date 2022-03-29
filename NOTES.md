@@ -159,6 +159,14 @@ let (a, b, c) = tup;
 let sum = b + c;
 ```
 
+in Rust the empty tuple `()` takes zero bytes and is used as a void
+
+```rs
+fn print_message() -> () {
+    println!("this function doesn't return anything");
+}
+```
+
 ### Type conversion
 
 type conversion is not done for you. You have to use the `as` key word
