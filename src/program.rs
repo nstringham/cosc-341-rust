@@ -166,3 +166,32 @@ fn sum_squares(n: u32) -> u32 {
     }
 }
 
+/// counts the number of characters blanks and lines in a file
+/// 
+/// # Arguments
+/// * `file_name` -  the name of the file to count blanks and lines in
+/// 
+/// # Returns
+/// * the number of characters in the file
+/// * the number of blanks in the file
+/// * the number of lines in the file
+fn file_count(file_name: &str) -> (u32, u32, u32) {
+    let contents = fs::read_to_string(file_name).expect("Something went wrong reading the file");
+
+    let mut characters = 0;
+    let mut blanks = 0;
+    let mut lines = 1;
+
+    for c in contents.chars() {
+        if c == '\n' {
+            lines += 1;
+        } else if c == ' ' {
+            blanks += 1;
+        }
+
+        characters += 1;
+    }
+
+    (characters, blanks, lines)
+}
+
