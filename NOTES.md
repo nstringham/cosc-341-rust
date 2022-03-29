@@ -252,6 +252,171 @@ which will set print "hello world" and set a = 5
 
 note that the last line is an expression and doesn't have a `;` just like in a function that returns something
 
+## Condition Expressions
+
+Rust has 2 conditional expressions: [`if`](#if) and [`match`](#match)
+
+### If
+
+this code prints a message if x is less than 5
+
+```rs
+if x < 5 {
+    println!("x is smaller than 5");
+}
+```
+
+you can also use `else`
+
+```rs
+if x < 5 {
+    println!("x is smaller than 5");
+} else if x == 5 {
+    println!("x is equal to 5");
+} else {
+    println!("x greater than 5");
+}
+```
+
+because `if` is a expression it evaluates to a value
+
+```rs
+let a = 4;
+let b = 7;
+
+let bigger = if a > b { a } else { b };
+```
+
+this is similar to doing `(a > b) ? a : b` in Java or C/C++
+
+### Match
+
+match statements allow for multiple cases
+
+```rs
+let x = 5;
+match x {
+    0 => {
+        println!("x is zero");
+    }
+    1 => {
+        println!("x is one");
+    }
+    2 => {
+        println!("x is two");
+    }
+    3 | 4 | 5 => {
+        println!("x is three, four, or five");
+    }
+    _ => {
+        println!("x is unknown");
+    }
+}
+```
+
+notice that multiple case can be combined with `|`
+
+`_` is the default case if none of the other cases are matched
+
+because `match` is an expression it evaluates to a value
+
+```rs
+let color = match x {
+    1 => "red",
+    2 => "green",
+    3 => "blue",
+    _ => "yellow",
+};
+```
+
+## Loops
+
+there are three was to make a loop in Rust [`loop`](#loop), [`while`](#while), and [`for`](#for)
+
+### Loop
+
+this code prints "hello" the the screen over and over forever
+
+```rs
+loop {
+    println!("hello");
+}
+```
+
+`continue` skips to the next iteration
+`break` to exit a loop
+
+```rs
+fn count(n: i32) {
+    let i = 0;
+    loop {
+        if i >= n {
+            break;
+        }
+
+        println!("{}", i);
+
+        i++;
+    }
+}
+```
+
+`break` can be used with a value
+
+```rs
+let number = loop {
+    let user_input = my_input_function();
+
+    if user_input < 0> {
+        println!("value must be positive");
+        continue;
+    } else {
+        break user_input;
+    }
+}
+```
+
+### While
+
+`while` breaks if a condition is false
+
+```rs
+fn count(n: i32) {
+    let i = 0;
+    while i < n {
+        println!("{}", i);
+
+        i++;
+    }
+}
+```
+
+### For
+
+`for` iterates through a list
+
+```rs
+let list = [2, 3, 5, 1];
+
+let mut sum = 0;
+
+for element in list {
+    sum += element;
+}
+
+println!("{}", sum); // outputs 11
+```
+
+you can define ranges with `..`
+
+```rs
+fn count(n: i32) {
+    for i in 0..n {
+        println!("{}", i);
+    }
+}
+```
+
 ## Comments
 
 you can add a comment with `//`
