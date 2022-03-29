@@ -102,3 +102,67 @@ fn display_primes(n: i32) {
 
     println!();
 }
+
+/// solves the quadratic equation ax^2 + bx + c = 0
+/// 
+/// this function uses mutable references to "return" multiple values
+///
+/// # Arguments
+/// * `a` - the a coefficient
+/// * `b` - the b coefficient
+/// * `c` - the c coefficient
+/// * `solution1` - the address to store the first solution in
+/// * `solution2` - the address to store the second solution in
+///
+/// # Returns
+/// true if there is a solution, false if there is no solution
+fn quadratic_mut(a: f64, b: f64, c: f64, x1: &mut f64, x2: &mut f64) -> bool {
+    let discriminant = b * b - 4.0 * a * c;
+
+    if discriminant < 0.0 {
+        false
+    } else {
+        let root = compute_sqrt(discriminant);
+        *x1 = (-b + root) / (2.0 * a);
+        *x2 = (-b - root) / (2.0 * a);
+        true
+    }
+}
+
+/// solves the quadratic equation ax^2 + bx + c = 0
+/// 
+/// this function uses a tuple to return multiple values
+/// 
+/// this function returns `None` if there is not solution
+///
+/// # Arguments
+/// * `a` - the a coefficient
+/// * `b` - the b coefficient
+/// * `c` - the c coefficient
+fn quadratic(a: f64, b: f64, c: f64) -> Option<(f64, f64)> {
+    let discriminant = b * b - 4.0 * a * c;
+
+    if discriminant < 0.0 {
+        None
+    } else {
+        let root = compute_sqrt(discriminant);
+        Some(((-b + root) / (2.0 * a), (-b - root) / (2.0 * a)))
+    }
+}
+
+/// finds the sum of the squares of the numbers from 1 to n
+/// 
+/// this function is implemented using recursion
+/// 
+/// # Arguments
+/// * `n` - a positive integer
+/// # Returns
+/// 1 + 4 + 9 + 16 + ... + n<sup>2</sup>
+fn sum_squares(n: u32) -> u32 {
+    if n == 0 {
+        0
+    } else {
+        n * n + sum_squares(n - 1)
+    }
+}
+
