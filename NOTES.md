@@ -24,6 +24,11 @@ Includes:
 -   `rustup` a tool for updating rust
 -   `cargo` rust's official package manager
 
+## The Book
+
+Rust has an official book that is a great way to learn rust.
+You can read it for free on the rust website https://doc.rust-lang.org/book/
+
 ## Variables
 
 here is how to make a variable
