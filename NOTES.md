@@ -61,8 +61,8 @@ types are not optional for constants
 
 has two main catagories of types
 
-- scaler types represent a single value
-- compound types represent a group of values
+-   [scaler types](#scaler-types) represent a single value
+-   [compound types](#compound-types) represent a group of values
 
 ## Scaler Types
 
