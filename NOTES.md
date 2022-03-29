@@ -101,9 +101,9 @@ let x: f64 = 1.0; // 64 but float
 let x: bool = true;
 ```
 
-### Charicters
+### Characters
 
-in rust charicters unicode and take 4 bytes
+in rust characters unicode and take 4 bytes
 
 ```rs
 let x: char = 'a';
