@@ -1,3 +1,11 @@
+/// computes the value of pi using n terms of an infinite sequence
+/// 
+/// this function uses the [Leibniz formula for π]
+/// 
+/// # Arguments
+/// * `n` - number of terms to compute
+/// 
+/// [Leibniz formula for π]: https://en.wikipedia.org/wiki/Leibniz_formula_for_π
 fn compute_pi(n: i32) -> f64 {
     // this sum approaches pi/4
     let mut sum: f64 = 0.0;
