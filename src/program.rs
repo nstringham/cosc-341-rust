@@ -1,3 +1,6 @@
+use std::io;
+use std::io::Write;
+use std::fs;
 /// computes the value of pi using n terms of an infinite sequence
 /// 
 /// this function uses the [Leibniz formula for π]
