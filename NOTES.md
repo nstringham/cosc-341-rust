@@ -1,10 +1,10 @@
 # Rust
 
-- Compiled low level general purpose language
-- designed as an alternative for C and C++
-- Main advantage over C is memory safety
-  - this means no null pointer exceptions
-- created by Graydon Hoare at Mozilla in 2010
+-   Compiled low level general purpose language
+-   designed as an alternative for C and C++
+-   Main advantage over C is memory safety
+    -   this means no null pointer exceptions
+-   created by Graydon Hoare at Mozilla in 2010
 
 ## Hello World
 
@@ -20,9 +20,9 @@ Install from [rust-lang.org](https://www.rust-lang.org/tools/install)
 
 Includes:
 
-- `rustc` the rust compiler
-- `rustup` a tool for updating rust
-- `cargo` rust's official package manager
+-   `rustc` the rust compiler
+-   `rustup` a tool for updating rust
+-   `cargo` rust's official package manager
 
 ## Variables
 
