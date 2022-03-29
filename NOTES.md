@@ -425,3 +425,78 @@ you can add a comment with `//`
 // a comment on it's own line
 let x = 5; // a comment at the end of a line
 ```
+
+## Structs
+
+structs allow multiple pieces of data to be stored together (kinda like tuples)
+
+to define a struct like this
+
+```rs
+struct Student {
+    name: String,
+    age: u32,
+    gpa: f64
+}
+```
+
+you can initialize a struct like this
+
+```rs
+let nate = Student {
+    name: String::from("Nate"),
+    age: 20,
+    gpa: 4.0
+};
+```
+
+and use them like this
+
+```rs
+println!("Name: {} Age: {} GPA: {}", nate.name, nate.age, nate.gpa );
+```
+
+if you make it mutable you can set it like this
+
+```rs
+fn birthday(user: &mut Student) {
+    user.age += 1;
+}
+```
+
+structs muse be entirely mutable or entirely immutable there is no way to make only some fields mutable
+
+## Methods
+
+we can create a method my placing a function inside a `impl` block and s=making it's firs parameter `self`
+
+```rs
+impl Student {
+    fn birthday(&mut self) {
+        self.age += 1;
+    }
+}
+```
+
+the `impl` block is for implementation which includes methods
+
+note: unlike C/C++ ypu can just do `.` and don't need to do `->` or `(*).` because rust automatically references and dereference things in some cases
+
+## Associated Functions
+
+you can also place functions inside `impl` that do not have a `self` they will be associated with the struct but not a method
+(like static methods in Java)
+
+```rs
+impl Student {
+    fn birthday(&mut self) {
+        self.age += 1;
+    }
+}
+```
+
+call an associated function using `::`
+
+```rs
+let mut nate = Student::build_student(String::from("Nate"), 20, 4.0);
+```
