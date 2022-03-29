@@ -176,6 +176,19 @@ let my_int: i32 = 5;
 let my_float: f32 = my_int as f32;
 ```
 
+## Operators
+
+`+`, `-`, `*`, `/`, `%`, `<`, `>`, `<=`, `>=`, `==`, `!=`, `&&`, `||`, and `!` all work like they do in Java and C/C++
+
+you can also do `+=`, and `-=`
+
+you cannot mix types so you have to convert
+
+```rs
+let three: i32 = 3;
+let three_fifths: f32 = three as f32 / 5.0
+```
+
 ## Functions
 
 use `fn` to make a function
