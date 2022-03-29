@@ -18,6 +18,12 @@ fn compute_pi(n: i32) -> f64 {
     sum * 4.0
 }
 
+/// computes the square root of a number using 10 iterations of [Newton's method]
+/// 
+/// # Arguments
+/// * `x` - the number to find the root of
+/// 
+/// [Newton's method]: https://en.wikipedia.org/wiki/Newton%27s_method#Square_root
 fn compute_sqrt(x: f64) -> f64 {
     let mut guess: f64 = 1.0;
 
@@ -28,9 +34,13 @@ fn compute_sqrt(x: f64) -> f64 {
     guess
 }
 
-// true at index 2, 3, 5, 7 (the prime indexes)
+/// true at index 2, 3, 5, 7 (the prime indexes)
 const FIRST_8_IS_PRIME: [bool; 8] = [false, false, true, true, false, true, false, true];
 
+/// checks wether a given number is prime
+/// 
+/// # Arguments
+/// * `n` - the number to check
 fn is_prime(n: i32) -> bool {
     
     // we only need to check if a number is divisible by a prime numbers
@@ -75,6 +85,10 @@ fn is_prime(n: i32) -> bool {
     }
 }
 
+/// prints all the primes less than or equal to a given number
+/// 
+/// # Arguments
+/// * `n` - the max prime to print
 fn display_primes(n: i32) {
     for i in 0..n {
         if is_prime(i) {
