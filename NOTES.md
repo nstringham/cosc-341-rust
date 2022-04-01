@@ -515,8 +515,12 @@ you can also place functions inside `impl` that do not have a `self` they will b
 
 ```rs
 impl Student {
-    fn birthday(&mut self) {
-        self.age += 1;
+    fn build_student(name: String, age: u32, gpa: f64) -> Student{
+        Student {
+            name: name,
+            age: age,
+            gpa: gpa
+        }
     }
 }
 ```
