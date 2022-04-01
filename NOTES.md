@@ -530,3 +530,64 @@ call an associated function using `::`
 ```rs
 let mut nate = Student::build_student(String::from("Nate"), 20, 4.0);
 ```
+
+## Error Handling
+
+Rust does not have try, catch, or throw instead it has `Result`, `match`, and `panic!`
+
+### Panic
+
+when a rust program encounters a runtime error it is called a panic
+
+you can manually trigger a panic like this
+
+```rs
+fn divide(a: f64, b: f64) -> f64 {
+    if b == 0 {
+        panic("divide by zero");
+    } else {
+        return a / b;
+    }
+}
+```
+
+if divide is called with b = 0 then the program will display "divide by zero" as an error and immediately exit with a non-zero exit code.
+
+### Result
+
+although panic is good for exiting the program there is no way to catch a panic
+
+to solve this problem Rust has a built in enum called `Result`
+
+`Result` is generic and takes the type of success and also the type of failure
+
+in this example the function returns a 64-bit float if successful or a string if an error occurs
+
+```rs
+fn divide(a: f64, b: f64) -> Result<f64, &str> {
+    if b == 0 {
+        return Err("divide by zero");
+    } else {
+        return Ok(a / b);
+    }
+}
+```
+
+we can use a match statement to switch between failure and success
+
+```rs
+match divide(a, b) {
+    Ok(value) => {
+        println!("a/b: {}", value);
+    },
+    Err(message) => {
+        println!("error: {}", message);
+    }
+}
+```
+
+you can also use a method called `unwrap` to automatically panic if the result is a failure
+
+```rs
+let c: f64 = divide(a, b).unwrap();
+```
