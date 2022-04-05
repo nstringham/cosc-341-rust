@@ -452,6 +452,71 @@ you can add a comment with `//`
 let x = 5; // a comment at the end of a line
 ```
 
+## Printing to stdout
+
+```rs
+println!("hello world");
+```
+
+`println` is a macro which is basically like a function
+
+you can use `{}` in insert a variable into the string
+
+```rs
+let friends = 5;
+let followers = 13;
+println!("You have {} friends and {} followers!", friends, followers);
+```
+
+you can also put formatting instructions inside the `{}`
+
+```rs
+println!("{:0.2}", 1.234);         // prints "1.23"
+println!("{:5}", 7);               // prints "    7"
+println!("{:<5}", 'x');            // prints "x    "
+println!("{:^5}", 'x');            // prints "  x  "
+println!("{:>5}", 'x');            // prints "    4"
+```
+
+you can use an index or a name or specify what variable goes where
+
+```rs
+println!("{1} {0}", 2, 3 );        // prints "3 2"
+println!("{b} {a}", a="2", b="3"); // prints "3 2"
+```
+
+`print` doesn't add a newline at the end
+
+```rs
+print!("how many: ")
+io::stdout().flush().unwrap();
+```
+
+it also doesn't flush stdout so you will need to do that yourself
+
+## Getting Input from stdin
+
+you can get a line of input by calling read_line on stdin
+
+```rs
+let mut input = String::new();
+io::stdin().read_line(&mut input).unwrap();
+```
+
+there is no `nextInt` or `scanf` so you will need to parse the string yourself
+
+the `parse` method is generic and is used to parse anything that can be parsed
+
+```rs
+let x = input.trim().parse::<i32>().unwrap();
+```
+
+thankfully if you don't provide the type it can usually be implied
+
+```rs
+let x: i32 = input.trim().parse().unwrap();
+```
+
 ## Structs
 
 structs allow multiple pieces of data to be stored together (kinda like tuples)
