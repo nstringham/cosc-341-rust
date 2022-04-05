@@ -1,6 +1,153 @@
 use std::io;
 use std::io::Write;
 use std::fs;
+
+fn main() {
+    loop {
+        print!("what command would you like to run?\n\
+                1  - computing pi\n\
+                2  - computing square root\n\
+                3  - displaying primes\n\
+                4  - processing grades\n\
+                5  - computing tax\n\
+                6  - solving quadratic (mutable reference)\n\
+                7  - solving quadratic (result or tuple)\n\
+                8  - computing sum squares\n\
+                9  - counting file\n\
+                10 - quit\n\
+                \n\
+                > ");
+
+        let option: u8 = read().unwrap();
+
+        println!();
+        
+        match option {
+            1 => { // computing pi
+                print!("how many terms should be used to approximate pi: ");
+                println!("PI is approximately {}", compute_pi(read().unwrap()));
+            }
+
+            2 => { // computing square root
+                print!("what number would you like the square root of: ");
+                let x = read().unwrap();
+                println!("the square root of {} is {}", x, compute_sqrt(x));
+            }
+
+            3 => { // displaying primes
+                print!("what is the maximum prime you would like displayed: ");
+                display_primes(read().unwrap());
+            }
+
+            4 => { // processing grades
+                process_scores();
+            }
+
+            5 => { // computing tax
+                print!("what is your income: ");
+                let income = read().unwrap();
+
+
+                print!("what is your status (single or married): ");
+                io::stdout().flush().unwrap();
+
+                let mut status = String::new();
+                io::stdin().read_line(&mut status).unwrap();
+
+
+                print!("are you out of state (i = in state, o = out of state): ");
+                io::stdout().flush().unwrap();
+
+                let mut state_string = String::new();
+                io::stdin().read_line(&mut state_string).unwrap();
+
+                let state = state_string.trim().chars().next().unwrap();
+
+
+                match compute_tax(income, &status.trim(), state) {
+                    Ok(tax) => {
+                        println!("\nyour tax is ${:.2}", tax);
+                    },
+                    Err(message) => {
+                        println!("\n{}", message);
+                    }
+                }
+            }
+
+            6 => { // solving quadratic (mutable reference)
+                println!("in the equation ax^2 + bx + c = 0 what are a, b, and c?");
+
+                print!("a: ");
+                let a: f64 = read().unwrap();
+                print!("b: ");
+                let b: f64 = read().unwrap();
+                print!("c: ");
+                let c: f64 = read().unwrap();
+
+                let mut x1 = -1.0;
+                let mut x2 = -1.0;
+
+                if quadratic_mut(a, b, c, &mut x1, &mut x2) {
+                    println!("\nx1 = {:.2}\nx2 = {:.2}", x1, x2);
+                } else {
+                    println!("\nno real solutions");
+                }
+            }
+
+            7 => { // solving quadratic (result or tuple)
+                println!("in the equation ax^2 + bx + c = 0 what are a, b, and c?");
+
+                print!("a: ");
+                let a: f64 = read().unwrap();
+                print!("b: ");
+                let b: f64 = read().unwrap();
+                print!("c: ");
+                let c: f64 = read().unwrap();
+
+                match quadratic(a, b, c) {
+                    Some((x1, x2)) => {
+                        println!("\nx1 = {:.2}\nx2 = {:.2}", x1, x2);
+                    },
+                    None => {
+                        println!("\nno real solutions");
+                    }
+                };
+            }
+
+            8 => { // computing sum squares
+                print!("how many squares to sum: ");
+                let n: u32 = read().unwrap();
+                println!("the sum of the squares is {}", sum_squares(n));
+            
+            }
+
+            9 => { // counting file
+                print!("what is the name of the file: ");
+                io::stdout().flush().unwrap();
+
+                let mut file_name = String::new();;
+                io::stdin().read_line(&mut file_name).unwrap();
+
+                let (characters, blanks, lines) = file_count(file_name.trim());
+
+                print!("\ncharacters: {}\nblanks: {}\nlines: {}\n", characters, blanks, lines);
+            }
+
+            10 => { // quit
+                println!("goodbye");
+                break;
+            }
+
+            _ => { // default
+                println!("invalid option");
+            }
+        }
+
+        println!();
+
+    }
+}
+
 /// computes the value of pi using n terms of an infinite sequence
 /// 
 /// this function uses the [Leibniz formula for π]
