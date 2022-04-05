@@ -164,6 +164,44 @@ fn process_scores() {
     print!("minimum score: {} {}", min_score, min_name);
     print!("maximum score: {} {}", max_score, max_name);
 }
+
+/// finds tax from given income and statuses
+/// 
+/// # Arguments
+/// * `income` - the income to find tax for
+/// * `status` - "married" or "single" (case insensitive)
+/// * `state` - "i" for in state, "o" for out of state (case insensitive)
+/// 
+/// # Returns
+/// the tax amount or an error message
+fn compute_tax(income: i32, status: &str, state: char) -> Result<f64, &str> {
+
+    let mut rate = if status.eq_ignore_ascii_case("married") {
+        if income < 60000 {
+            0.2
+        } else {
+            0.25
+        }
+    } else if status.eq_ignore_ascii_case("single") {
+        if income < 40000 {
+            0.3
+        } else {
+            0.35
+        }
+    } else {
+        return Err("invalid status");
+    };
+
+    if state == 'o' || state == 'O' {
+        rate -= 0.03;
+    } else if state != 'i' && state != 'I' {
+        return Err("invalid state");
+    }
+
+    return Ok(rate * income as f64);
+}
+
+
 /// solves the quadratic equation ax^2 + bx + c = 0
 /// 
 /// this function uses mutable references to "return" multiple values
