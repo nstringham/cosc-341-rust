@@ -206,3 +206,17 @@ fn file_count(file_name: &str) -> (u32, u32, u32) {
     (characters, blanks, lines)
 }
 
+/// reads a value from stdin
+/// 
+/// this requires that the user only inputs one item per line
+fn read<T: std::str::FromStr>() -> Result<T, T::Err> {
+    // flush in case we use `print!()` before `read()`
+    io::stdout().flush().unwrap();
+
+    // read a line of text
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).unwrap();
+
+    // remove whitespace and convert to the requested return type
+    input.trim().parse()
+}
