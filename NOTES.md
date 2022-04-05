@@ -527,6 +527,38 @@ The heep is used for memory that must be allocated at runtime because it has an 
 
 All of the scaler and compound types have a size known at compile time so they are stack.
 
+## Strings
+
+rust has two string types `str` and `String`
+
+an empty `String` can be created using `new`
+
+or it can be created from a `str` or string literal using `from`
+
+`String` has a dynamic size that can be expended with `push` or `push_str`
+
+```rs
+let mut my_string = String::new();
+
+my_string = String::from("hello");
+
+my_string.push(' ');
+
+my_string.push_str("world");
+```
+
+a `str` cannot be expanded but it can be reassigned
+
+```rs
+let mut my_str = "hello world";
+
+my_str = "goodbye world";
+```
+
+in this example `hello world` and `goodbye world` are string literals which means they are in the programs binary and `my_str` points at the address in the binary
+
+you can also get a `str` by [slicing](#slicing) a `String`
+
 ## Structs
 
 structs allow multiple pieces of data to be stored together (kinda like tuples)
