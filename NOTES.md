@@ -559,6 +559,153 @@ in this example `hello world` and `goodbye world` are string literals which mean
 
 you can also get a `str` by [slicing](#slicing) a `String`
 
+## Ownership
+
+in rust variables have an owner
+
+variable ownership can be transferred but there can only be one owner at a time
+
+an owner is like a scope and when an owner ends the variable is dropped
+
+`{}` create a scope that can own variables
+
+you can transfer ownership of a variable by passing it into a function
+
+```rs
+fn main() {
+    let x = String::from("hello");
+
+    println!("{}", x); // first print
+
+    some_function(x);
+
+    println!("{}", x); // second print
+}
+
+fn some_function(s: String) {
+    println!("{}", x); // function print
+}
+```
+
+the second print is a compile error because ownership of x has bean transferred to `some_function`
+
+we can fix this by returning s at the end of `some_function` to transfer ownership back to `main`
+
+```rs
+fn main() {
+    let x = String::from("hello");
+
+    println!("{}", x); // first print
+
+    let x = some_function(x);
+
+    println!("{}", x); // second print
+}
+
+fn some_function(s: String) -> String {
+    println!("{}", s); // function print
+
+    s // return s
+}
+```
+
+## References
+
+you can reference and dereference variables with `&` and `*` similar to C/C++
+
+```rs
+let x = 5;
+
+let ref_to_x = &x;
+
+let also_x = *ref_to_x;
+```
+
+you cannot change the pointer value of a reference
+
+```rs
+// compile error!
+ref_to_x = ref_to_x + 1;
+```
+
+```rs
+let mut x = 5;
+
+let ref_to_x = &x;
+
+let mut also_x = *ref_to_x;
+
+also_x = 1;
+```
+
+## Borrowing
+
+By passing a reference to a function ownership is not given to the function. This is called borrowing.
+
+```rs
+fn main() {
+    let x = String::from("hello");
+
+    println!("{}", x); // first print
+
+    some_function(&x);
+
+    println!("{}", x); // second print
+}
+
+fn some_function(s: &String) {
+    println!("{}", *s); // function print
+}
+```
+
+you can use `mut` to allow a function to mutate a variable using it's reference
+
+```rs
+fn main() {
+    let mut x = String::from("hello");
+
+    some_function(&mut x);
+
+    println!("{}", x);
+}
+
+fn some_function(s: &mut String) {
+    s.push_str(", world");
+}
+```
+
+## Slicing
+
+you can get a reference to a part of a list using a slice
+
+```rs
+let arr = [3, 1, 4, 1, 5, 9, 2];
+
+let first_three = &arr[0..3];
+
+let next_four = &arr[3..7];
+```
+
+you can leave one out to slice from thr start or to the end
+
+```rs
+let arr = [3, 1, 4, 1, 5, 9, 2];
+
+let first_three = &arr[..3];
+
+let next_four = &arr[3..];
+```
+
+you can also slice `str` or `String` to make a `str`
+
+```rs
+let x = String::from("hello");
+
+let first_two = &x[0..2];
+
+println!("{}", first_two); // prints he
+```
+
 ## Structs
 
 structs allow multiple pieces of data to be stored together (kinda like tuples)
