@@ -114,6 +114,56 @@ fn display_primes(n: i32) {
     println!();
 }
 
+/// processes score info from stdin
+/// 
+/// reads students and grades from stdin until a q is reached then prints
+/// average score, minimum score, maximum score, and name of minimum and maximum scores
+fn process_scores() {
+    print!("how many grades: ");
+    let n: u32 = read().unwrap();
+
+    let mut count = 0;
+    let mut total_score = 0;
+
+    
+    let mut min_score = 0;
+    let mut max_score = u32::MAX;
+    let mut min_name = String::new();
+    let mut max_name = String::new();
+
+    for i in 0..n {
+        print!("student {} name: ", i + 1);
+        std::io::stdout().flush().unwrap();
+        let mut name = String::new();
+        io::stdin().read_line(&mut name).unwrap();
+
+        print!("student {} grade: ", i + 1);
+        let score: u32 = read().unwrap();
+
+        total_score += score;
+        count += 1;
+
+        // if score is new minimum
+        if score < min_score
+        {
+            min_score = score;
+            min_name = name;
+        }
+
+        // if score in new maximum
+        else if score > max_score
+        {
+            max_score = score;
+            max_name = name;
+        }
+    }
+
+    println!();
+
+    print!("average score: {}", total_score as f64 / count as f64);
+    print!("minimum score: {} {}", min_score, min_name);
+    print!("maximum score: {} {}", max_score, max_name);
+}
 /// solves the quadratic equation ax^2 + bx + c = 0
 /// 
 /// this function uses mutable references to "return" multiple values
