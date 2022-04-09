@@ -519,11 +519,11 @@ let x: i32 = input.trim().parse().unwrap();
 
 ## The Heap and the Stack
 
-Rust stores variables in 2 places the heep and the stack.
+Rust stores variables in 2 places the heap and the stack.
 
 The stack if used for fixed size variables and is planned out at compile time.
 
-The heep is used for memory that must be allocated at runtime because it has an unknown size at compile time.
+The heap is used for memory that must be allocated at runtime because it has an unknown size at compile time.
 
 All of the scaler and compound types have a size known at compile time so they are stack.
 
