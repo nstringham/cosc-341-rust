@@ -125,7 +125,7 @@ fn main() {
                 print!("what is the name of the file: ");
                 io::stdout().flush().unwrap();
 
-                let mut file_name = String::new();;
+                let mut file_name = String::new();
                 io::stdin().read_line(&mut file_name).unwrap();
 
                 let (characters, blanks, lines) = file_count(file_name.trim());
