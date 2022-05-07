@@ -231,7 +231,7 @@ fn is_prime(n: i32) -> bool {
     loop {
         // if it is divisible by 6x+1 or 6x-1
         if n % (k - 1) == 0 || n % (k + 1) == 0 {
-            return true;
+            return false;
         }
 
         // if we have checked all the factors less than sqrt(n)
