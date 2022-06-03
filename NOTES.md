@@ -93,11 +93,11 @@ let z: isize = 5; // architecture dependant signed
 
 ### Floats
 
-integers are available in 32-bit and 64-bit
+floats are available in 32-bit and 64-bit
 
 ```rs
 let x: f32 = 1.0; // 32 bit float
-let x: f64 = 1.0; // 64 but float
+let x: f64 = 1.0; // 64 bit float
 ```
 
 ### Boolean
@@ -108,7 +108,7 @@ let x: bool = true;
 
 ### Characters
 
-in rust characters unicode and take 4 bytes
+in rust characters are unicode and take 4 bytes
 
 ```rs
 let x: char = 'a';
