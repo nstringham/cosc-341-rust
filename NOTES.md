@@ -45,7 +45,7 @@ let x = 5;
 
 type annotations are optional if they can be inferred
 
-variables are immutable my default (like `final` in Java)
+variables are immutable by default (like `final` in Java)
 
 to make them mutable add `mut`
 
