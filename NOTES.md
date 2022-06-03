@@ -274,7 +274,7 @@ let a = {
 };
 ```
 
-which will set print "hello world" and set a = 5
+which will print "hello world" and set a = 5
 
 note that the last line is an expression and doesn't have a `;` just like in a function that returns something
 
@@ -393,7 +393,7 @@ fn count(n: i32) {
 let number = loop {
     let user_input = my_input_function();
 
-    if user_input < 0> {
+    if user_input < 0 {
         println!("value must be positive");
         continue;
     } else {
