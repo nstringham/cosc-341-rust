@@ -88,7 +88,7 @@ rust also allows you to use the cpu architectures native size with `isize` and `
 ```rs
 let x: i8 = 5; // 8 bit signed
 let y: u128 = 5; // 128 bit unsigned
-let z: isize = 5; // architecture dependant unsigned
+let z: isize = 5; // architecture dependant signed
 ```
 
 ### Floats
