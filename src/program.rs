@@ -115,7 +115,6 @@ fn main() {
                 print!("how many squares to sum: ");
                 let n: u32 = read().unwrap();
                 println!("the sum of the squares is {}", sum_squares(n));
-            
             }
 
             9 => { // counting file
