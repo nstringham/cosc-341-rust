@@ -1,6 +1,7 @@
 # compiled code
 **/*.exe
 **/*.pdb
+/target
 
 # vscode settings
 .vscode/settings.json

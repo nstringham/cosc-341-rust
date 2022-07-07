@@ -1,0 +1,11 @@
+[package]
+name = "cosc-341-rust"
+version = "0.1.0"
+edition = "2021"
+default-run = "program"
+
+[[bin]]
+name = "program"
+path = "src/program.rs"
+
+[dependencies]
