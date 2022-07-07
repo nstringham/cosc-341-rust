@@ -1,6 +1,6 @@
+use std::fs;
 use std::io;
 use std::io::Write;
-use std::fs;
 
 fn main() {
     loop {
@@ -21,7 +21,7 @@ fn main() {
         let option: u8 = read().unwrap();
 
         println!();
-        
+
         match option {
             1 => { // computing pi
                 print!("how many terms should be used to approximate pi: ");
@@ -47,13 +47,11 @@ fn main() {
                 print!("what is your income: ");
                 let income = read().unwrap();
 
-
                 print!("what is your status (single or married): ");
                 io::stdout().flush().unwrap();
 
                 let mut status = String::new();
                 io::stdin().read_line(&mut status).unwrap();
-
 
                 print!("are you out of state (i = in state, o = out of state): ");
                 io::stdout().flush().unwrap();
@@ -62,7 +60,6 @@ fn main() {
                 io::stdin().read_line(&mut state_string).unwrap();
 
                 let state = state_string.trim().chars().next().unwrap();
-
 
                 match compute_tax(income, &status.trim(), state) {
                     Ok(tax) => {
@@ -144,24 +141,22 @@ fn main() {
         }
 
         println!();
-
     }
 }
 
 /// computes the value of pi using n terms of an infinite sequence
-/// 
+///
 /// this function uses the [Leibniz formula for π]
-/// 
+///
 /// # Arguments
 /// * `n` - number of terms to compute
-/// 
+///
 /// [Leibniz formula for π]: https://en.wikipedia.org/wiki/Leibniz_formula_for_π
 fn compute_pi(n: i32) -> f64 {
     // this sum approaches pi/4
     let mut sum: f64 = 0.0;
 
     let max_denominator = n * 2;
-    
 
     let mut denominator = 1;
     let mut numerator = 1.0;
@@ -177,10 +172,10 @@ fn compute_pi(n: i32) -> f64 {
 }
 
 /// computes the square root of a number using 10 iterations of [Newton's method]
-/// 
+///
 /// # Arguments
 /// * `x` - the number to find the root of
-/// 
+///
 /// [Newton's method]: https://en.wikipedia.org/wiki/Newton%27s_method#Square_root
 fn compute_sqrt(x: f64) -> f64 {
     let mut guess: f64 = 1.0;
@@ -196,11 +191,10 @@ fn compute_sqrt(x: f64) -> f64 {
 const FIRST_8_IS_PRIME: [bool; 8] = [false, false, true, true, false, true, false, true];
 
 /// checks wether a given number is prime
-/// 
+///
 /// # Arguments
 /// * `n` - the number to check
 fn is_prime(n: i32) -> bool {
-    
     // we only need to check if a number is divisible by a prime numbers
     //
     // all prime numbers greater than 3 are either 6x+1 or 6x-1 where x is a whole number
@@ -208,7 +202,6 @@ fn is_prime(n: i32) -> bool {
     // if n is not divisible by any number less than sqrt(n) then it is prime
     //
     // so if n is 101 we can just check if n is divisible by 2, 3, 5, 7, 11, and 14
-    
 
     // negative numbers are not prime
     if n < 0 {
@@ -244,7 +237,7 @@ fn is_prime(n: i32) -> bool {
 }
 
 /// prints all the primes less than or equal to a given number
-/// 
+///
 /// # Arguments
 /// * `n` - the max prime to print
 fn display_primes(n: i32) {
@@ -262,7 +255,7 @@ fn display_primes(n: i32) {
 }
 
 /// processes score info from stdin
-/// 
+///
 /// reads students and grades from stdin until a q is reached then prints
 /// average score, minimum score, maximum score, and name of minimum and maximum scores
 fn process_scores() {
@@ -272,7 +265,6 @@ fn process_scores() {
     let mut count = 0;
     let mut total_score = 0;
 
-    
     let mut min_score = 0;
     let mut max_score = u32::MAX;
     let mut min_name = String::new();
@@ -291,15 +283,12 @@ fn process_scores() {
         count += 1;
 
         // if score is new minimum
-        if score < min_score
-        {
+        if score < min_score {
             min_score = score;
             min_name = name;
         }
-
         // if score in new maximum
-        else if score > max_score
-        {
+        else if score > max_score {
             max_score = score;
             max_name = name;
         }
@@ -313,16 +302,15 @@ fn process_scores() {
 }
 
 /// finds tax from given income and statuses
-/// 
+///
 /// # Arguments
 /// * `income` - the income to find tax for
 /// * `status` - "married" or "single" (case insensitive)
 /// * `state` - "i" for in state, "o" for out of state (case insensitive)
-/// 
+///
 /// # Returns
 /// the tax amount or an error message
 fn compute_tax(income: i32, status: &str, state: char) -> Result<f64, &str> {
-
     let mut rate = if status.eq_ignore_ascii_case("married") {
         if income < 60000 {
             0.2
@@ -348,9 +336,8 @@ fn compute_tax(income: i32, status: &str, state: char) -> Result<f64, &str> {
     return Ok(rate * income as f64);
 }
 
-
 /// solves the quadratic equation ax^2 + bx + c = 0
-/// 
+///
 /// this function uses mutable references to "return" multiple values
 ///
 /// # Arguments
@@ -376,9 +363,9 @@ fn quadratic_mut(a: f64, b: f64, c: f64, x1: &mut f64, x2: &mut f64) -> bool {
 }
 
 /// solves the quadratic equation ax^2 + bx + c = 0
-/// 
+///
 /// this function uses a tuple to return multiple values
-/// 
+///
 /// this function returns `None` if there is not solution
 ///
 /// # Arguments
@@ -397,9 +384,9 @@ fn quadratic(a: f64, b: f64, c: f64) -> Option<(f64, f64)> {
 }
 
 /// finds the sum of the squares of the numbers from 1 to n
-/// 
+///
 /// this function is implemented using recursion
-/// 
+///
 /// # Arguments
 /// * `n` - a positive integer
 /// # Returns
@@ -413,10 +400,10 @@ fn sum_squares(n: u32) -> u32 {
 }
 
 /// counts the number of characters blanks and lines in a file
-/// 
+///
 /// # Arguments
 /// * `file_name` -  the name of the file to count blanks and lines in
-/// 
+///
 /// # Returns
 /// * the number of characters in the file
 /// * the number of blanks in the file
@@ -442,7 +429,7 @@ fn file_count(file_name: &str) -> (u32, u32, u32) {
 }
 
 /// reads a value from stdin
-/// 
+///
 /// this requires that the user only inputs one item per line
 fn read<T: std::str::FromStr>() -> Result<T, T::Err> {
     // flush in case we use `print!()` before `read()`
