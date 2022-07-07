@@ -61,7 +61,7 @@ fn main() {
 
                 let state = state_string.trim().chars().next().unwrap();
 
-                match compute_tax(income, &status.trim(), state) {
+                match compute_tax(income, status.trim(), state) {
                     Ok(tax) => {
                         println!("\nyour tax is ${:.2}", tax);
                     }
