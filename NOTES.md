@@ -45,7 +45,7 @@ let x = 5;
 
 type annotations are optional if they can be inferred
 
-variables are immutable my default (like `final` in Java)
+variables are immutable by default (like `final` in Java)
 
 to make them mutable add `mut`
 
@@ -88,16 +88,16 @@ rust also allows you to use the cpu architectures native size with `isize` and `
 ```rs
 let x: i8 = 5; // 8 bit signed
 let y: u128 = 5; // 128 bit unsigned
-let z: isize = 5; // architecture dependant unsigned
+let z: isize = 5; // architecture dependant signed
 ```
 
 ### Floats
 
-integers are available in 32-bit and 64-bit
+floats are available in 32-bit and 64-bit
 
 ```rs
 let x: f32 = 1.0; // 32 bit float
-let x: f64 = 1.0; // 64 but float
+let x: f64 = 1.0; // 64 bit float
 ```
 
 ### Boolean
@@ -108,7 +108,7 @@ let x: bool = true;
 
 ### Characters
 
-in rust characters unicode and take 4 bytes
+in rust characters are unicode and take 4 bytes
 
 ```rs
 let x: char = 'a';
@@ -274,7 +274,7 @@ let a = {
 };
 ```
 
-which will set print "hello world" and set a = 5
+which will print "hello world" and set a = 5
 
 note that the last line is an expression and doesn't have a `;` just like in a function that returns something
 
@@ -393,7 +393,7 @@ fn count(n: i32) {
 let number = loop {
     let user_input = my_input_function();
 
-    if user_input < 0> {
+    if user_input < 0 {
         println!("value must be positive");
         continue;
     } else {
