@@ -64,7 +64,7 @@ fn main() {
                 match compute_tax(income, &status.trim(), state) {
                     Ok(tax) => {
                         println!("\nyour tax is ${:.2}", tax);
-                    },
+                    }
                     Err(message) => {
                         println!("\n{}", message);
                     }
@@ -104,7 +104,7 @@ fn main() {
                 match quadratic(a, b, c) {
                     Some((x1, x2)) => {
                         println!("\nx1 = {:.2}\nx2 = {:.2}", x1, x2);
-                    },
+                    }
                     None => {
                         println!("\nno real solutions");
                     }
